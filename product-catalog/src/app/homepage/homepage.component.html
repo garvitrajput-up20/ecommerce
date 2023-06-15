@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-success bg-success">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="color: aliceblue;" href="#">Products Catalog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+        class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="container">
+    <form [formGroup]="Homepage" class="d-flex" (ngSubmit)="Search()">
+      <input class="form-control" style="width: 500px; margin-left: -45%;" type="search" placeholder="Search"
+        formControlName="search"><select class="btn btn-outline-info"
+        style="margin-left: 5px;color: rgb(243, 246, 248);border-color: aquamarine;" formControlName="filter"
+        name="filter" id="filter">
+        <option value="brand">Brand</option>
+        <option value="code">Code</option>
+        <option value="name">Name</option>
+        <option *ngIf="userData" value="price">Price</option>
+      </select>
+      <button class="btn btn-outline-info" style="margin-left: 5px;color: rgb(243, 246, 248);border-color: aquamarine;"
+        type="submit">Search</button>
+      <div><button type="button" *ngIf="!userData"  (click)="login()" class="btn btn-info " style="position: absolute; right: 0;color: rgb(243, 246, 248);
+    border-color: aquamarine;background-color: rgb(20, 126, 84);margin-right: 5px;">Login/Register</button>
+        <button type="button" *ngIf="userData" (click)="logout()" class="btn btn-info "
+          style="position: absolute; right: 0; color: rgb(243, 246, 248);border-color: aquamarine;background-color: rgb(20, 126, 84);margin-right: 5px;">Signout</button>
+      </div>
+    </form>
+  </div>
+</nav>
+<div class="container mt-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product Image</th>
+        <th>Product Name</th>
+        <th>Product Brand</th>
+        <th>Product Code</th>
+        <th *ngIf="userData">Product Price</th>
+        <th *ngIf="userData==null">CODE</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of products">
+        <td>
+
+          <img [src]="getProductImageUrl(item.image)" alt="Product Image" style="height: 100px; width: 100px;">
+        </td>
+        <td>{{item.name}}</td>
+        <td>{{item.brand}}</td>
+
+        <td>{{item.code}}</td>
+        <td *ngIf="userData">Rs.{{item.price}}</td>
+        <td *ngIf="userData==null">{{item.code}}</td>
+        <td>
+          <button type="button" class="btn btn-success" (click)="details(item.id)">View Details</button>
+        </td>

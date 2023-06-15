@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center">Create New Account</h3>
+                    <form #registrationForm="ngForm" (ngSubmit)="register(registrationForm)" class="form">
+                        <div class="form-group">
+                            <label for="email">Email ID*</label>
+                            <input class="form-control" type="email" ngModel id="email" name="email">
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="firstname">User Name*</label>
+                                    <input class="form-control" ngModel type="text" id="username" name="username"
+                                        >
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="lastname">Full Name*</label>
+                                    <input class="form-control" type="text" id="fullname" ngModel name="fullname"
+                                        >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="password">Password*</label>
+                                    <input class="form-control" type="password" id="password" ngModel name="password"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div style="text-align: center;"><button class="btn btn-primary btn-block"
+                               >Submit</button></div>
+                        <p class="text-center mt-3">Already have an account? <a routerLink="/login">Login</a></p>
+                    </form>
+                    <a routerLink="/">Homepage</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

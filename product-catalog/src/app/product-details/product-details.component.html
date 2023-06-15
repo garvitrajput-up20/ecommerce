@@ -1,0 +1,48 @@
+<button type="button" (click)="back()" class="btn btn-secondary mx-auto d-block">Back</button>
+<div class="container py-4 my-4">
+    <div class="header" style="background-color: rgb(81, 88, 81);">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center">
+                <table style="border-collapse: collapse; width: 100%; margin-left: 0.3px;">
+                    <tr>
+                        <th colspan="2" style="border: 1px solid black; padding: 6px;">
+                            <h3><b>{{products.name}}</b></h3>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="border: 1px solid black; padding: 6px;">Product Brand:</th>
+                        <td style="border: 1px solid black; padding: 6px;">{{products.brand}}</td>
+                    </tr>
+                    <tr>
+                        <th style="border: 1px solid black; padding: 6px;">Product Price:</th>
+                        <td style="border: 1px solid black; padding: 6px;">Rs.{{products.price}}</td>
+                    </tr>
+                    <tr>
+                        <th style="border: 1px solid black; padding: 6px;">Product Code:</th>
+                        <td style="border: 1px solid black; padding: 6px;">{{products.code}}</td>
+                    </tr>
+                    <tr>
+                        <th style="border: 1px solid black; padding: 6px;">Product Description:</th>
+                        <td style="border: 1px solid black; padding: 6px;">{{products.description}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6 text-center"><img [src]="getProductImageUrl(products.image)"
+                    style="display: block; margin: 0 auto;" width="450px" height="250px"></div>
+        </div>
+        <hr style="margin-top: 0;">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center">
+                <form [formGroup]="pincode" (ngSubmit)="Pcode()" class="form-horizontal"><input class="form-control"
+                        type="text" style="align-self: start;" placeholder="Enter Pincode" id="pincode" name="pincode"
+                        formControlName="Pincode"><button class="btn btn-success mt-3" [disabled]="pincode.invalid"
+                        style="margin-bottom: 1px;">Check Your Delivery</button>
+                    <div *ngIf="yes" class="mt-3 text-success">Available !!</div>
+                    <div *ngIf="no" class="mt-3 text-danger">Not Available, Sorry!</div>
+                    <div *ngIf="yes" class="mt-3" style="margin-bottom: 1px;">Your Delivery will be in {{days}} days
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
